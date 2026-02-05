@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De Dudu para Gigi</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Corações animados */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: subir 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes subir {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .app {
+      background: #fff;
+      width: 100%;
+      max-width: 420px;
+      min-height: 520px;
+      border-radius: 28px;
+      padding: 30px 25px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      margin-top: 10px;
+      color: #ff4d6d;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff4d6d, #ff758c);
+      color: #fff;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+
+    .texto {
+      display: none;
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .escolha {
+      display: none;
+      margin-top: 25px;
+    }
+
+    .sim {
+      background: linear-gradient(135deg, #ff758c, #ff9a9e);
+    }
+
+    .final {
+      margin-top: 25px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <h1>💌 De Dudu para Gigi 💌</h1>
+
+    <button id="abrir" onclick="mostrarTexto()">Toque aqui (por sua conta e risco 😳)</button>
+
+    <div class="texto" id="texto">
+      <p>Oi Gigi… então… eu tentei fingir costume, mas não deu 😅</p>
+
+      <p>Você é linda. Não linda normal. <strong>Linda nível problema</strong>. Muito linda. Injustamente linda.</p>
+
+      <p>Esse cabelo ondulado parece que foi desenhado, os óculos só servem pra aumentar o charme (sim, isso é ciência), e quando você aparece, meu cérebro simplesmente desliga.</p>
+
+      <p>Eu faço ironia, faço piada, mas no fundo é só eu tentando disfarçar que você virou meu pensamento favorito.</p>
+
+      <p>Então vou criar coragem agora:</p>
+
+      <p><strong>Gianne, você aceita namorar comigo?</strong></p>
+
+      <p>
+        Pufavo vida rsrs 🥺<br>
+        Pufavo vida rsrs 😭<br>
+        Pufavo vida rsrs 😅<br>
+        Pufavo vida rsrs 😔
+      </p>
+
+      <p>Prometo te admirar todos os dias, tentar te fazer rir sempre e continuar sendo esse idiota apaixonado… mas só se você quiser 🫶</p>
+
+      <div class="escolha" id="escolha">
+        <button class="sim" onclick="finalFeliz()">SIM 💖</button>
+        <button class="sim" onclick="finalFeliz()">CLARINHO QUE SIM MEU AMOR DA MINHA VIDA 😭💘</button>
+      </div>
+
+      <div class="final" id="final"></div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarTexto() {
+      document.getElementById('abrir').style.display = 'none';
+      document.getElementById('texto').style.display = 'block';
+      document.getElementById('escolha').style.display = 'block';
+      iniciarCoracoes();
+    }
+
+    function finalFeliz() {
+      document.getElementById('final').innerHTML = "Agora oficialmente o cara mais feliz do mundo.<br>Te amo, Gigi 💖 — Dudu";
+    }
+
+    function iniciarCoracoes() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerText = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }, 300);
+    }
+  </script>
+</body>
+</html>
